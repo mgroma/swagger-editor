@@ -23,10 +23,10 @@ export default function(system) {
         saveContentToStorage(yaml)
         localStorage.setItem("ngStorage-SwaggerEditorCache", null)
       } catch(e) {
-        system.specActions.updateSpec(PetstoreYaml)
+        // system.specActions.updateSpec(PetstoreYaml)
       }
     } else {
-      system.specActions.updateSpec(PetstoreYaml)
+      // system.specActions.updateSpec(PetstoreYaml)
     }
   }, 0)
   return {

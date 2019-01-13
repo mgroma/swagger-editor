@@ -24,6 +24,7 @@ export default class Topbar extends React.Component {
   }
 
   getGeneratorUrl = () => {
+    return null;
     const { isOAS3, isSwagger2 } = this.props.specSelectors
     const { swagger2GeneratorUrl, oas3GeneratorUrl } = this.props.getConfigs()
 
@@ -68,7 +69,7 @@ export default class Topbar extends React.Component {
       .then(res => {
         this.setState({ clients: res.body || [] })
       })
-      
+
       serverGetter({}, {
         // contextUrl is needed because swagger-client is curently
         // not building relative server URLs correctly
@@ -164,7 +165,8 @@ export default class Topbar extends React.Component {
     let jsContent = YAML.safeLoad(editorContent)
     // JS Object -> pretty JSON string
     let prettyJsonContent = beautifyJson(jsContent, null, 2)
-    this.downloadFile(prettyJsonContent, `${fileName}.json`)
+    alert('prettyjsoncontent=' + prettyJsonContent);
+    // this.downloadFile(prettyJsonContent, `${fileName}.json`)
   }
 
   saveAsText = () => {
@@ -330,8 +332,10 @@ export default class Topbar extends React.Component {
     const TopbarInsert = getComponent("TopbarInsert")
     const Modal = getComponent("TopbarModal")
 
-    let showServersMenu = this.state.servers && this.state.servers.length
-    let showClientsMenu = this.state.clients && this.state.clients.length
+    // let showServersMenu = this.state.servers && this.state.servers.length
+    // let showClientsMenu = this.state.clients && this.state.clients.length
+    let showServersMenu = false
+    let showClientsMenu = false
 
     let definitionLanguage = this.getDefinitionLanguage()
 
@@ -352,10 +356,10 @@ export default class Topbar extends React.Component {
 
     if(isJson) {
       saveAsElements.push(<li><button type="button" onClick={this.saveAsJson}>Save as JSON</button></li>)
-      saveAsElements.push(<li><button type="button" onClick={this.saveAsYaml}>Convert and save as YAML</button></li>)
+      saveAsElements.push(<li><button type="button" onClick={this.saveAsYaml}>Convertd and save as YAML</button></li>)
     } else {
       saveAsElements.push(<li><button type="button" onClick={this.saveAsYaml}>Save as YAML</button></li>)
-      saveAsElements.push(<li><button type="button" onClick={this.saveAsJson}>Convert and save as JSON</button></li>)
+      saveAsElements.push(<li><button type="button" onClick={this.saveAsJson}>Converttt and save as JSON</button></li>)
     }
 
     return (
