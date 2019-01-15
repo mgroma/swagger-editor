@@ -172,6 +172,8 @@ export default class Topbar extends React.Component {
     let jsContent = YAML.safeLoad(editorContent)
     // JS Object -> pretty JSON string
     let prettyJsonContent = beautifyJson(jsContent, null, 2)
+    //MG update initializer side
+    $("#swagger-spec").val =prettyJsonContent
     //MG skip downloading the file
     // this.downloadFile(prettyJsonContent, `${fileName}.json`)
   }
