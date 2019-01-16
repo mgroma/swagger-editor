@@ -46,7 +46,10 @@ export default function(system) {
 }
 
 function saveContentToStorage(str) {
-  let jsContent = YAML.safeLoad(str)
+  let jsContent;
+  if (str) {
+    jsContent = JSON.stringify(YAML.safeLoad(str));
+  }
   localStorage.setItem(CONTENT_KEY_JSON, jsContent)
   return localStorage.setItem(CONTENT_KEY, str)
 }
