@@ -1,5 +1,6 @@
-import PetstoreYaml from "./petstore"
+import YAML from '@kyleshockey/js-yaml'
 const CONTENT_KEY = "swagger-editor-content"
+const CONTENT_KEY_JSON = "swagger-editor-content-json"
 
 let localStorage = window.localStorage
 
@@ -45,5 +46,7 @@ export default function(system) {
 }
 
 function saveContentToStorage(str) {
+  let jsContent = YAML.safeLoad(str)
+  localStorage.setItem(CONTENT_KEY_JSON, jsContent)
   return localStorage.setItem(CONTENT_KEY, str)
 }
